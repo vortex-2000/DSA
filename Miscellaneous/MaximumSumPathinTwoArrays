@@ -1,0 +1,51 @@
+//link: https://www.geeksforgeeks.org/problems/maximum-sum-path-in-two-arrays5314/1?itm_source=geeksforgeeks&itm_medium=article&itm_campaign=practice_card
+
+class Solution {
+  public:
+    int maxPathSum(vector<int>& arr1, vector<int>& arr2) {
+        // code here
+        sort(arr1.begin(),arr1.end());
+        sort(arr2.begin(),arr2.end());
+        
+        int n1 = arr1.size();
+        int n2 = arr2.size();
+        
+        int i=0,j=0;
+        int s1=0,s2=0,result=0;
+        
+        while(i<n1 && j<n2)
+        {
+            if(arr1[i]<arr2[j])
+            {
+                 s1+=arr1[i];
+                 i++;
+            }
+            else if(arr2[j]<arr1[i])
+            {
+                s2+=arr2[j];
+                j++;
+            }
+            else
+            {
+                result += arr1[i] + max(s1,s2);
+                i++;j++;
+                s1=0;
+                s2=0;
+            }
+        }
+        
+        while(i<n1)
+        {
+            s1 += arr1[i];
+            i++;
+        }
+        while(j<n2)
+        {
+            s2+= arr2[j];
+            j++;
+        }
+        
+        result += max(s1,s2);
+        return result;
+    }
+};
