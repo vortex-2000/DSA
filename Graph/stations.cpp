@@ -1,7 +1,10 @@
+// Problem Description:
+// You are given a set of stations connected by bidirectional paths, where each path has a pass value associated with it. 
+// The pass value represents the minimum pass required to travel on that path. The goal is to determine the minimum pass value required to travel from a source station to a destination station.
+// Print the path
+
 #include<bits/stdc++.h>
 using namespace std;
-
-
 
 //Time = O(V+E) Space = O(V+E)
 int bfsTraversal(vector<vector<pair<int,int>>>&adj, int src, int dest,int n)
